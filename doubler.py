@@ -28,7 +28,6 @@ def marching_doubler(rl, sl):
     i = 0
     with open(out_file, 'w') as file_writer:
         while i < sl:
-            temp = (i // rl) % (rl - 1)
             for j in range(rl - 1):
                 if (i // rl) % (rl - 1) == j:
                     buffer_str += f'{rs[j]},'
