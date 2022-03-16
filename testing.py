@@ -1,6 +1,7 @@
 import unittest
 from collections import namedtuple
 from doubler import marching_doubler, out_file
+from doubler_v2 import marching_doubler_v2
 
 class Tests(unittest.TestCase):
     @classmethod
@@ -30,10 +31,14 @@ class Tests(unittest.TestCase):
 
     def test_marching_doubler(self):
         for fixture in self.fixtures:
-            self._verify_result(fixture)
+            self._verify_result(fixture, marching_doubler)
 
-    def _verify_result(self, fixture):
-        marching_doubler(fixture.rl, fixture.sl)
+    def test_marching_doubler_v2(self):
+        for fixture in self.fixtures:
+            self._verify_result(fixture, marching_doubler_v2)
+
+    def _verify_result(self, fixture, meth_doubler):
+        meth_doubler(fixture.rl, fixture.sl)
         with open(out_file, 'r+') as results:
             res = results.readline()
             self.assertEqual(res, fixture.expected, f'Expecting {fixture.expected} but found {res} with run length: {fixture.rl} and sequence length: {fixture.sl}')
