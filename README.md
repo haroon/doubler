@@ -6,5 +6,7 @@ Implementation of the Marching Doubler algorithm. Writes the output to `.\marchi
 ### Usage:
 python doubler.py r <run_length> s <sequence_length>
 
+python doubler_v2.py r <run_length> s <sequence_length>
+
 ### Testing:
 python testing.py
